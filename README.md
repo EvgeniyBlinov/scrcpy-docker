@@ -8,6 +8,10 @@
 
 Docker image to run [scrcpy](https://github.com/Genymobile/scrcpy).
 
+## Build
+
+`sudo docker build -t scrcpy:latest .`
+
 ## Usage
 
 Before running the image, Docker must be allowed to connect to the X server:
@@ -30,7 +34,7 @@ For example: `pierlo1/scrcpy:amd`.
 To run the image with Docker run:
 
 ```shell
-docker run --rm -i -t --privileged \
+sudo docker run --rm -i -t --privileged \
     -v /dev/bus/usb:/dev/bus/usb \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=$DISPLAY \
@@ -45,7 +49,7 @@ For persistence, make a copy of `.env.example`, name it `.env`, and configure it
 Once done, run the command:
 
 ```shell
-docker-compose run --rm scrcpy
+sudo docker-compose run --rm scrcpy
 ```
 
 The `scrcpy_adb_keys` volume is used to preserve the `adb` authorization keys.  

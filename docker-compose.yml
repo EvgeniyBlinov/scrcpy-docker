@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   scrcpy:
-    image: pierlo1/scrcpy:${SCRCPY_GRAPHICS_TYPE:?Please set the SCRCPY_GRAPHICS_TYPE environment variable.}
+    image: scrcpy:${SCRCPY_GRAPHICS_TYPE:?Please set the SCRCPY_GRAPHICS_TYPE environment variable.}
     volumes:
       - /dev/bus/usb:/dev/bus/usb:ro
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
@@ -13,6 +13,7 @@ services:
       ADB_VENDOR_KEYS: /root/.android
     privileged: true
     tty: true
+    command: scrcpy --video-codec=h265 --max-size=1920 --max-fps=60 --no-audio --keyboard=uhid
 
 volumes:
   scrcpy_adb_keys:
